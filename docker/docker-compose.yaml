@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: test
+    ports:
+    - '5432:5432'
+#    volumes:
+#    - postgres:13-alpine:/val/lib/postgressql/data
+#    - ./sql/init.sql:/doccker-entrypoint-initdb.d/init.sql
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+     - "5050:80"
+
